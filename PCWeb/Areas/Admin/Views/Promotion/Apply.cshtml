@@ -1,0 +1,48 @@
+﻿@model PCWeb.Models.Promotion
+@{
+    ViewData["Title"] = "Áp dụng khuyến mãi";
+}
+<h2 class="text-center">Áp dụng khuyến mãi</h2>
+<hr />
+<div class="row">
+    <div class="col-sm-9">
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.PromotionId)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.PromotionId)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.PromotionName)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.PromotionName)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.PromotionCode)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.PromotionCode)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.PromotionDiscount)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.PromotionDiscount) %
+            </dd>
+            <dt class="col-sm-3">
+                Quà tặng
+            </dt>
+            <dd class="col-sm-9">
+                <a class="btn btn-outline-info" asp-controller="Promotion" asp-area="Admin" asp-action="Gift" asp-route-id="@Model.PromotionId">Thêm quà tặng</a>
+            </dd>
+        </dl>
+    </div>
+</div>
+<div class="row">
+    <form asp-action="Apply" asp-controller="Promotion" asp-area="Admin" method="post">
+        <input type="hidden" asp-for="PromotionId" />
+        <input type="submit" value="Áp dụng" class="btn btn-primary" />
+    </form>
+</div>

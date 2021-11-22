@@ -1,0 +1,51 @@
+﻿@model PCWeb.Models.Source.Product
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+}
+<h3>Bạn có chắc chắn xóa sản phẩm này không?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ProductCode)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ProductCode)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ProductSeries)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ProductSeries)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ProductPrice)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ProductQuantity)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ProductQuantity)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ProductWarranty)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ProductWarranty) Tháng
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ProductId" />
+        <input type="submit" value="Xóa" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-info">Quay về danh sách</a>
+    </form>
+</div>

@@ -1,0 +1,13 @@
+﻿@model PCWeb.Models.Root.Laptop
+@{
+    ViewData["Title"] = "Xóa laptop";
+}
+<h3>Bạn có chắc chắn xóa sản phẩm này không?</h3>
+<br />
+<div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ProductId" />
+        <input type="submit" value="Xóa" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-info">Quay về danh sách</a>
+    </form>
+</div>

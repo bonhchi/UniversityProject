@@ -1,0 +1,97 @@
+﻿@model PCWeb.Models.Order
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+}
+<div>
+    <h2 class="text-center">Chi tiết đơn hàng</h2>
+    <hr />
+    <div class="row">
+        <div class="col-sm-9">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.OrderId)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.OrderId)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.CusName)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.CusName)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model =>
+                    model.Address)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model =>
+                    model.Address)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model =>
+                    model.Phone)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model =>
+                    model.Phone)
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>STT</td>
+                    <td>Tên SP</td>
+                    <td>Hình</td>
+                    <td>Số Lượng</td>
+                    <td>Giá</td>
+                    <td>Tổng cộng</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewBag.Order != null)
+                {
+                    int i = 1;
+                    @foreach (var item in ViewBag.Order)
+                    {
+                        <tr>
+
+                            <td>@(i++)</td>
+                            <td>@item.Product.ProductName</td>
+                            <td><img src="~/images/@item.Product.ProductImage" class="img-thumbnail" width="100px" height="100px" /></td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Product.ProductPrice.ToString("0,0")</td>
+                            <td>@((item.Quantity * @item.Product.ProductPrice).ToString("0,0"))</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+            <tr>
+                <td align="left" colspan="4">Thuế VAT (@ViewBag.VAT %)</td>
+                <td colspan="2">@ViewBag.VATFee.ToString("0,0") đ</td>
+            </tr>
+            <tr>
+                <td align="left" colspan="4">Phí vận chuyển (Số lượng : @ViewBag.Weight kg)</td>
+                <td colspan="2">@ViewBag.WeightCost.ToString("0,0") đ</td>
+            </tr>
+            <tr>
+                <td align="left" colspan="4">Điểm thưởng:</td>
+                <td colspan="2">@ViewBag.Point</td>
+            </tr>
+            <tr>
+                <td align="left" colspan="4">Tổng cộng</td>
+                <td colspan="2">
+                    @ViewBag.total.ToString("0,0") đ
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <a asp-controller="Account" asp-action="Order" asp-route-id="@ViewBag.Id" class="btn btn-primary">Trở về danh sách</a>
+</div>
+
+

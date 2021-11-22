@@ -1,0 +1,97 @@
+﻿@model PCWeb.Models.Account.StaffRegistation
+@{
+    ViewData["Title"] = "Thêm tài khoản nhân viên";
+}
+<br />
+<h2 class="text-center">Tạo tài khoản nhân viên</h2>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Add" asp-controller="Account" asp-area="Admin" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <label asp-for="FirstName" class="control-label col-md-3"></label>
+                <div class="col-md-6">
+                    <input asp-for="FirstName" class="form-control" />
+                </div>
+
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LastName" class="control-label col-md-3"></label>
+                <div class="col-md-6">
+                    <input asp-for="LastName" class="form-control" />
+                </div>
+
+                <span asp-validation-for="LastName" class="text-danger"> </span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Email" class="control-label col-md-3"></label>
+                <div class="col-md-6">
+                    <input asp-for="Email" class="form-control" />
+                </div>
+
+                <span asp-validation-for="Email" class="text-danger"> </span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="DayOfBirth" class="control-label col-md-3"></label>
+                <div class="col-md-6">
+                    <input asp-for="DayOfBirth" class="form-control" />
+                </div>
+
+                <span asp-validation-for="DayOfBirth" class="text-danger"> </span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Gender" class="control-label col-md-3"></label>
+                <div class="col-md-6">
+                    <select name="name" class="form-control ">
+                        @foreach (var item in ViewBag.Selected)
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    </select>
+                </div>
+                <span asp-validation-for="Gender" class="text-danger"> </span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PhoneNumber" class="control-label col-md-3"></label>
+                <div class="col-md-6">
+                    <input asp-for="PhoneNumber" class="form-control" />
+                </div>
+
+                <span asp-validation-for="PhoneNumber" class="text-danger"> </span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Address" class="control-label col-md-3"></label>
+                <div class="col-md-6">
+                    <input asp-for="Address" class="form-control" />
+                </div>
+
+                <span asp-validation-for="Address" class="text-danger"> </span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Password" class="control-label col-md-3"></label>
+                <div class="col-md-6">
+                    <input asp-for="Password" class="form-control" />
+                </div>
+
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="ConfirmPassword" class="control-label col-md-3"></label>
+                <div class="col-md-6">
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                </div>
+
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group row col-md-3">
+                <input type="submit" value="Tạo tài khoản" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Staff" asp-area="Admin" asp-controller="Account" class="btn btn-primary">Trở lại danh sách</a>
+</div>
+

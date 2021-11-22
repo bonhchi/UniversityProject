@@ -1,0 +1,54 @@
+﻿@using PCWeb.Models
+@{
+    ViewData["Title"] = "Doanh thu";
+}
+@model List<Revenue>
+<h2 class="text-md-center">Doanh thu</h2>
+<br />
+<form class="row" asp-controller="Revenue" asp-action="Search" asp-area="Admin" method="get">
+    <div class="col-sm-3 text-right form-group">
+        <label class="col-form-label">
+            Tìm kiếm theo tên sản phẩm:
+        </label>
+    </div>
+    <div class="col-sm-6 form-group">
+        <input type="text" class="input-width form-control mr-sm-2" name="search" placeholder="Nhập tên sản phẩm">
+    </div>
+    <div class="col-sm-3 form-group">
+        <button type="submit" class="btn btn-success">Tìm</button>
+    </div>
+</form>
+<br />
+<h2>Số lượng sản phẩm: @Model.Count</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên sản phẩm</th>
+            <th>Ngày thêm</th>
+            <th>Số lượng đã mua</th>
+            <th>Số tiền</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            int i = 1;
+            @for(int j = 0; j < Model.Count; j++)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@Model[j].ProductName</td>
+                    <td>@Model[j].DayCreate.ToString("dd/MM/yyyy")</td>
+                    <td>@ViewBag.Quantity[j]</td>
+                    <td>@ViewBag.Total[j]</td>
+                    <td>
+                        <a class="btn btn-outline-info" asp-controller="Revenue" asp-action="Detail" asp-route-id="@Model[j].RevenueId">Chi tiết</a>
+                        <a class="btn btn-outline-danger" asp-controller="Revenue" asp-action="Delete" asp-route-id="@Model[j].RevenueId">Xóa</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,34 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PCWeb.Models.Account
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+<ul class="navbar-nav flex-grow-1">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdownAccountLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+               title="Welcome">Chào @UserManager.Users.FirstOrDefault(p => p.Email == User.Identity.Name).FirstName!</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownAccountLink">
+                <a class="dropdown-item" asp-route-id="@UserManager.Users.FirstOrDefault(p => p.Email == User.Identity.Name).Id" asp-action="Detail" asp-controller="Account">Thông tin tài khoản</a>
+                <a class="dropdown-item" asp-controller="Account"
+                  asp-action="Logout" asp-area="">Đăng xuất</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Cart" asp-action="Index">
+                <i class="fas fa-shopping-cart"></i> Giỏ hàng
+            </a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Login"><i class="fas fa-users"></i>  Đăng nhập</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Cart" asp-action="Index">
+                <i class="fas fa-shopping-cart"></i> Giỏ hàng
+            </a>
+        </li>
+    }
+</ul>

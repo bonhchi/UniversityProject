@@ -1,0 +1,155 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+/*navbar*/
+/*a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}*/
+
+/* Provide sufficient contrast against white background */
+/*a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}*/
+.test-padding {
+    padding-top: 130px;
+    padding-bottom: 500px;
+}
+.item-padding{
+    padding-top: 50px;
+}
+.img-test {
+    height: 370px;
+    width: 900px;
+}
+.img-icon {
+    height: 50px;
+    width: 50px;
+}
+
+.search-bar {
+    padding-left: 135px;
+}
+
+.input-width {
+    width: 200px;
+}
+
+.fixed-carousel {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fixed-item {
+    margin-right: 450px;
+}
+
+.fixed-width {
+    width: 250px;
+}
+
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: whitesmoke;
+    color: black;
+    position:absolute;
+    padding-top:30px;
+}
+
+.test-container {
+    max-width: 1140px;
+}
+.list-test {
+    width: 150px;
+    margin-top: -12px;
+    height: 35px;
+}
+
+.label-text {
+    background: #d7202c;
+    padding: 10px 20px;
+    color: #fff;
+    min-width: 100%;
+    margin:0;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+/*Chi tiết sp*/
+/*.card{
+   min-height:410px;
+   max-height:650px;
+}*/
+.card-info{
+    height: 420px;
+}
+.card-img{
+    height : 260px;
+}
+.carousel-test-right {
+    padding-right: 150px;
+    height: 30%;
+}
+.carousel-test-left {
+    padding-left: 150px;
+    height: 30%;
+}
+
+/*Link*/
+.anchor {
+    color:black;
+    font-size: 18px;
+}
+.anchor:hover{
+    color:black;
+    text-decoration:none;
+}

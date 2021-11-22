@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Xóa tài khoản";
+}
+<h3>Bạn có chắc chắn xóa tài khoản này không?</h3>
+<br />
+<div>
+    <form asp-action="Delete">
+        <input type="submit" value="Xóa" class="btn btn-danger" />
+        <a asp-action="Staff" asp-area="Admin" asp-controller="Account" class="btn btn-info">Quay về danh sách</a>
+    </form>
+</div>
+

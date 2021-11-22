@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ Admin";
+}
+
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">Số lượng sản phẩm: @ViewBag.Product</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-action="Index" asp-area="Admin" asp-controller="Product">Xem chi tiết</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">Số lượng Laptop: @ViewBag.Laptop</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-action="Index" asp-area="Admin" asp-controller="Laptop">Xem chi tiết</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">Số lượng PC: @ViewBag.PC</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-action="Index" asp-area="Admin" asp-controller="PC">Xem chi tiết</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-danger text-white mb-4">
+                <div class="card-body">Số lượng tài khoản: @ViewBag.Account</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-action="Staff" asp-area="Admin" asp-controller="Account">Xem chi tiết</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br />
+<div class="row">
+    <h4>Danh sách Laptop</h4>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên Laptop</th>
+                <th>Mã Laptop</th>
+                <th>CPU</th>
+                <th>GPU</th>
+                <th>Loại Laptop</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.ListLaptop != null)
+            {
+                int i = 1;
+                @foreach (var item in ViewBag.ListLaptop)
+                {
+                    <tr>
+                        <td>@(i++)</td>
+                        <td>@item.Product.ProductName</td>
+                        <td>@item.LaptopSeries</td>
+                        <td>@item.LaptopCPU</td>
+                        <td>@item.LaptopGPU</td>
+                        <td>@item.LaptopCategory.LaptopCategoryName</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+<div class="row">
+    <h4>Danh sách PC</h4>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên PC</th>
+                <th>Mã PC</th>
+                <th>CPU</th>
+                <th>GPU</th>
+                <th>Loại PC</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.ListPC != null)
+            {
+                int i = 1;
+                @foreach (var item in ViewBag.ListPC)
+                {
+                    <tr>
+                        <td>@(i++)</td>
+                        <td>@item.Product.ProductName</td>
+                        <td>@item.PCCpu</td>
+                        <td>@item.PCGpu</td>
+                        <td>@item.PCRam</td>
+                        <td>@item.PCCategory.PCCategoryName</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

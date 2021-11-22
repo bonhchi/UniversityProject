@@ -1,0 +1,275 @@
+﻿@model PCWeb.Models.Source.Product
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row">
+    <img />
+    <div class="col-lg-6">
+        <img src="~/images/@Model.ProductImage" height="400px" width="auto" />
+
+    </div>
+    <div class="col-lg-6">
+        <br />
+        <div class="row">
+            <h2>@Model.ProductName</h2>
+        </div>
+
+        <br />
+        <div class="row">
+            <dl class="row">
+                <dt class="col-sm-5">
+                    @Html.DisplayNameFor(model => model.Brand.BrandName)
+                </dt>
+                <dd class="col-sm-7">
+                    @Html.DisplayFor(model => model.Brand.BrandName)
+                </dd>
+                @if (ViewBag.PC == null && ViewBag.Status == null)
+                {
+                    <dt class="col-sm-5">
+                        Màu sắc
+                    </dt>
+                    <dd class="col-sm-7">
+                        @ViewBag.Laptop.LaptopColor
+                    </dd>
+                    <dt class="col-sm-5">
+                        Loại
+                    </dt>
+                    <dd class="col-sm-7">
+                        @ViewBag.Category
+                    </dd>
+                }
+                <dt class="col-sm-5">
+                    @Html.DisplayNameFor(model => model.ProductWarranty)
+                </dt>
+                <dd class="col-sm-7">
+                    @Html.DisplayFor(model => model.ProductWarranty) tháng
+                </dd>
+            </dl>
+        </div>
+
+        <br />
+        <div class="row">
+            <h2>@Html.DisplayNameFor(model => model.ProductPrice): @Model.ProductPrice.ToString("0,0") đ</h2>
+        </div>
+        <br />
+        <div class="row">
+            @if (Model.ProductQuantity > 0)
+            {
+                <a class="btn btn-danger" asp-controller="Cart" asp-action="Buy" asp-route-id="@Model.ProductId">Thêm vào giỏ hàng</a>
+            }
+            else
+            {
+                <a class="btn btn-danger" title="Hết hảng">Hết hàng</a>
+            }
+        </div>
+    </div>
+</div>
+<br />
+<h2>Thông số máy</h2>
+@if (ViewBag.Status == 1)
+{
+    <div class="row justify-content-center">
+        <p>Sản phẩm chưa được cập nhật</p>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-striped">
+                @if (ViewBag.PC == null)
+                {
+                    <tr>
+                        <th>
+                            Mã Laptop
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopSeries
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            CPU
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopCPU
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            GPU
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopGPU
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            RAM
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopRAM
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Lưu trữ
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopStorage
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Webcam
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopWebcam
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Cổng kết nối
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopPort
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Kết nối
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopConnectivity
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Bàn phím
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopKeyboard
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Hệ diều hành
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopOS
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Kích thước
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopDimension
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Pin
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopBattery
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Cân nặng
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopWeight
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Màu sắc
+                        </th>
+                        <td>
+                            @ViewBag.Laptop.LaptopColor
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <th>
+                            Tên PC
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.ProductName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            CPU
+                        </th>
+                        <td>
+                            @ViewBag.PC.PCCpu
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Mainboard
+                        </th>
+                        <td>
+                            @ViewBag.PC.PCMainboard
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            RAM
+                        </th>
+                        <td>
+                            @ViewBag.PC.PCRam
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Card đồ họa
+                        </th>
+                        <td>
+                            @ViewBag.PC.PCGpu
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Lưu trữ
+                        </th>
+                        <td>
+                            @ViewBag.PC.PCStorage
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Nguồn
+                        </th>
+                        <td>
+                            @ViewBag.PC.PCPsu
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Thùng máy
+                        </th>
+                        <td>
+                            @ViewBag.PC.PCCase
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Tản nhiệt
+                        </th>
+                        <td>
+                            @ViewBag.PC.PCCooling
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+}
+
+<br />

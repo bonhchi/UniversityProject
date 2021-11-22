@@ -1,0 +1,40 @@
+﻿@model PCWeb.Models.Fee
+@{
+    ViewData["Title"] = "Sửa phí";
+}
+<h2 class="text-center">Chỉnh sửa phí</h2>
+<hr />
+<div class="row">
+    <div class="col-1g-10">
+        <form asp-action="Edit" asp-controller="Fee" method="post" enctype="multipart/form-data">
+            <div class="form-group row">
+                <label asp-for="FeeName" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="FeeName" class="form-control" />
+                </div>
+                <span asp-validation-for="FeeName" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="FeeAmount" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="FeeAmount" class="form-control" />
+                </div>
+                <span asp-validation-for="FeeAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="FeeUnit" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="FeeUnit" class="form-control" />
+                </div>
+                <span asp-validation-for="FeeUnit" class="text-danger"></span>
+            </div>
+            <div class="form-group row col-sm-3">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-primary">Quay lại danh sách</a>
+</div>
+

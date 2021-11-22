@@ -1,0 +1,64 @@
+﻿@using PCWeb.Models
+
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<Order>
+<h2 class="text-md-center">Đơn hàng</h2>
+<br />
+<form class="row" asp-controller="Order" asp-action="Index" asp-area="Admin" method="get">
+    <div class="col-sm-3 text-right form-group">
+        <label class="col-form-label">
+            Tìm kiếm theo email:
+        </label>
+    </div>
+    <div class="col-sm-6 form-group">
+        <input type="text" class="input-width form-control mr-sm-2" name="search" placeholder="Nhập email">
+    </div>
+    <div class="col-sm-3 form-group">
+        <button type="submit" class="btn btn-success">Tìm</button>
+    </div>
+</form>
+<br/>
+<h2>Số lượng đơn hàng: @Model.Count</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên khách hàng</th>
+            <th>Email</th>
+            <th>Trạng thái</th>
+            <th>Thanh toán</th>
+            <th>Ngày đặt</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            int i = 1;
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@item.CusName</td>
+                    <td>@item.Email</td>
+                    <td>@item.OrderCondition.OrderConditionName</td>
+                    <td>@item.OrderCheckout</td>
+                    <td>@item.OrderDate.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <a class="btn btn-outline-info" asp-controller="Order" asp-action="Detail" asp-route-id="@item.OrderId">Chi tiết đơn hàng</a>
+                        <a class="btn btn-outline-primary" asp-controller="Order" asp-action="Condition" asp-route-id="@item.OrderId">Trạng thái</a>
+                        @*<a class="btn btn-outline-danger" asp-controller="Order" asp-action="Delete" asp-route-id="@item.OrderId">Xóa</a>*@
+                        @if (item.OrderCheckout == "Chưa thanh toán")
+                        {
+                            <a class="btn btn-outline-danger" asp-controller="Order" asp-action="Payment" asp-route-id="@item.OrderId">Thanh toán</a>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+

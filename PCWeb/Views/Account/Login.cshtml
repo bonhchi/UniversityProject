@@ -1,0 +1,40 @@
+﻿@model PCWeb.Models.Account.UserLogin
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+<br />
+<h2 class="text-center">Đăng nhập</h2>
+<br />
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <form asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]">
+            <div class="form-group row">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.RememberMe)
+                </label>
+                <input class="form-check-input col-md-6" asp-for="RememberMe" type="checkbox" />
+            </div>
+            <div class="form-group row justify-content-center">
+                <input type="submit" value="Đăng nhập" class="btn btn-primary" />
+                <a class="btn btn-primary" style="margin-left:50px" asp-action="Register" asp-controller="Account">Đăng ký</a>
+            </div>
+        </form>
+       
+    </div>
+</div>
+@section Scripts {
+    @{await
+            Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

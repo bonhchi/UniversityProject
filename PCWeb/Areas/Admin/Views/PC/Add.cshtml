@@ -1,0 +1,90 @@
+﻿@model PCWeb.Models.Root.PC
+@{
+    ViewData["Title"] = "Thêm thông số PC";
+}
+<h2 class="text-center">Thêm thông số PC</h2>
+<hr />
+<div class="row">
+    <div class="col-lg-10">
+        <form asp-action="Add" asp-controller="PC" method="post" enctype="multipart/form-data">
+            <div class="form-group row">
+                <label asp-for="Product.ProductName" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <select asp-for="ProductId" class="form-control"
+                            asp-items="@ViewBag.Selected">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PCCpu" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="PCCpu" class="form-control" />
+                </div>
+                <span asp-validation-for="PCCpu" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PCMainboard" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="PCMainboard" class="form-control" />
+                </div>
+                <span asp-validation-for="PCMainboard" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PCRam" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="PCRam" class="form-control" />
+                </div>
+                <span asp-validation-for="PCRam" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PCGpu" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="PCGpu" class="form-control" />
+                </div>
+                <span asp-validation-for="PCGpu" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PCStorage" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="PCStorage" class="form-control" />
+                </div>
+                <span asp-validation-for="PCStorage" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PCPsu" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="PCPsu" class="form-control" />
+                </div>
+                <span asp-validation-for="PCPsu" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PCCase" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="PCCase" class="form-control" />
+                </div>
+                <span asp-validation-for="PCCase" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PCCooling" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="PCCooling" class="form-control" />
+                </div>
+                <span asp-validation-for="PCCooling" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PCCategory.PCCategoryName" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <select asp-for="PCCategoryId" class="form-control"
+                            asp-items="@ViewBag.Category">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row col-sm-3">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-primary">Quay lại danh sách</a>
+</div>

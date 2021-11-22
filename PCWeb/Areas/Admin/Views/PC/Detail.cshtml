@@ -1,0 +1,113 @@
+﻿@model PCWeb.Models.Root.PC
+@{
+    ViewData["Title"] = "Chi tiết thông số PC";
+}
+<div>
+    <h2 class="text-center">Chi tiết thông số PC</h2>
+    <br />
+    <h4>Thông tin chung</h4>
+    <br />
+    <div class="row">
+        <div class="col-lg-6">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.ProductName)
+                        </th>
+                        <td>
+                            @ViewBag.product
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.Brand.BrandName)
+                        </th>
+                        <td>
+                            @ViewBag.brand
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PCCpu)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PCCpu)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PCMainboard)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PCMainboard)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PCRam)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PCRam)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PCGpu)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PCGpu)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-6">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PCCategory.PCCategoryName)
+                        </th>
+                        <td>
+                            @ViewBag.category
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PCStorage)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PCStorage)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PCPsu)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PCPsu)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PCCase)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PCCase)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PCCooling)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.PCCooling)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

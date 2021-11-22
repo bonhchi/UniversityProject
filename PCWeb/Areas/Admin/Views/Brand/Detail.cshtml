@@ -1,0 +1,25 @@
+﻿@model PCWeb.Models.Source.Brand
+@{
+    ViewData["Title"] = "Chi tiết thương hiệu";
+}
+
+<h2 class="text-center">Chi tiết thương hiệu</h2>
+<br />
+<h4>Thông tin chung</h4>
+<br />
+<div class="row">
+    <div class="col-lg-6">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BrandName)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.BrandName)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

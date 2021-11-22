@@ -1,0 +1,50 @@
+﻿@using PCWeb.Models.Source
+@{
+    ViewData["Title"] = "Thương hiệu";
+}
+@model List<Brand>
+    <h2 class="text-md-center">Thương hiệu</h2>
+    <br />
+    <form class="row" asp-controller="Brand" asp-action="Index" asp-area="Admin" method="get">
+        <div class="col-sm-3 text-right form-group">
+            <label class="col-form-label">
+                Tìm kiếm:
+            </label>
+        </div>
+        <div class="col-sm-6 form-group">
+            <input type="text" class="input-width form-control mr-sm-2" name="search" placeholder="Nhập tên thương hiệu">
+        </div>
+        <div class="col-sm-3 form-group">
+            <button type="submit" class="btn btn-success">Tìm</button>
+        </div>
+    </form>
+    <br />
+    <h3>Số lượng thương hiệu: @Model.Count</h3>
+    <p><a class="btn btn-primary" asp-controller="Brand" asp-action="Add">Thêm</a></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên thương hiệu</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                int i = 1;
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(i++)</td>
+                        <td>@item.BrandName</td>
+                        <td>
+                            <a class="btn btn-outline-info" asp-area="Admin" asp-controller="Brand" asp-action="Edit" asp-route-id="@item.BrandId">Chỉnh sửa</a>
+                            <a class="btn btn-outline-danger" asp-area="Admin" asp-controller="Brand" asp-action="Delete" asp-route-id="@item.BrandId">Xóa</a>
+                            <a class="btn btn-outline-success" asp-area="Admin" asp-controller="Brand" asp-action="Detail" asp-route-id="@item.BrandId">Chi tiết</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>

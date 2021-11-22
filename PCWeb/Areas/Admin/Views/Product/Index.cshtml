@@ -1,0 +1,73 @@
+﻿@using PCWeb.Models.Source
+@{
+    ViewData["Title"] = "Sản phẩm";
+}
+@model List<Product>
+    <h2 class="text-md-center">Sản phẩm</h2>
+<br />
+<form class="row" asp-controller="Product" asp-action="Index" asp-area="Admin" method="get">
+    <div class="col-sm-2 text-right form-group">
+        <label class="col-form-label">
+            Tìm kiếm:
+        </label>
+    </div>
+    <div class="form-group col-sm-2">
+            <select name="name" class="form-control">
+                <option value="all">All</option>
+                @foreach(var item in ViewBag.Selected)
+                {
+                    <option value="@item.CategoryName">@item.CategoryName</option>
+                }
+            </select>
+        <span asp-validation-for="@Model[0].CategoryId" class="text-danger"></span>
+    </div>
+    <div class="col-sm-6 form-group">
+        <input type="text" class="input-width form-control mr-sm-2" name="search" placeholder="Nhập tên sản phẩm">
+    </div>
+    <div class="col-sm-2 form-group">
+        <button type="submit" class="btn btn-success">Tìm</button>
+    </div>
+</form>
+            
+<br />
+    <h3>Số lượng sản phẩm: @Model.Count</h3>
+    <p><a class="btn btn-primary" asp-controller="Product" asp-action="Add">Thêm sản phẩm</a></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên sản phẩm</th>
+                <th>Thể loại</th>
+                <th>Hãng</th>
+                <th>Hình ảnh</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Ngày lập</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                int i = 1;
+                foreach (var item in Model)
+                {
+            <tr>
+                <td>@(i++)</td>
+                <td>@item.ProductName</td>
+                <td>@item.Category.CategoryName</td>
+                <td>@item.Brand.BrandName</td>
+                <td><img src="~/images/@item.ProductImage" class="img-thumbnail" width="100px" height="100px"/></td>
+                <td>@item.ProductQuantity</td>
+                <td>@item.ProductPrice.ToString("0,0")</td>
+                <td>@item.DayCreate.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a class="btn btn-outline-info" asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-id="@item.ProductId">Chỉnh sửa</a>
+                    <a class="btn btn-outline-danger" asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-id="@item.ProductId">Xóa</a>
+                    <a class="btn btn-outline-success" asp-area="Admin" asp-controller="Product" asp-action="Detail" asp-route-id="@item.ProductId">Chi tiết</a>
+                </td>
+            </tr>
+                }
+            }
+        </tbody>
+    </table>

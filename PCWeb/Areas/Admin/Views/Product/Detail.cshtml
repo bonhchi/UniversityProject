@@ -1,0 +1,132 @@
+﻿@model PCWeb.Models.Source.Product
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+    <div>
+        <h2 class="text-center">Chi tiết sản phẩm</h2>
+        <br />
+        <h4>Thông tin chung</h4>
+        <br />
+        <div class="row">
+            <div class="col-lg-6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductCode)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.ProductCode)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductName)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.ProductName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductSeries)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.ProductSeries)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductPrice)
+                            </th>
+                            <td>
+                                @Model.ProductPrice.ToString("0,0")
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductPriceReality)
+                            </th>
+                            <td>
+                                @Model.ProductPriceReality.ToString("0,0")
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DayCreate)
+                            </th>
+                            <td>
+                                @Model.DayCreate.ToString("dd/MM/yyyy")
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductImage)
+                            </th>
+                            <td>
+                                <img src="~/images/@Model.ProductImage" class="img-thumbnail" width="100px" height="100px" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Brand.BrandName)
+                            </th>
+                            <td>
+                                @ViewBag.Brand
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Category.CategoryName)
+                            </th>
+                            <td>
+                                @ViewBag.Category
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductQuantity)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.ProductQuantity)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductWarranty)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.ProductWarranty)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductDescription)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.ProductDescription)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProductPackage)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.ProductPackage) kg
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<br />
+<div>
+    <a asp-action="Index" class="btn btn-primary">Quay về danh sách</a>
+</div>

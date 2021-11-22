@@ -1,0 +1,85 @@
+﻿@using PCWeb.Models.Source
+@{
+    ViewData["Title"] = "Laptop";
+}
+@model List<Product>
+    <br />
+    <div class="row">
+        <h3>Laptop</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="row">
+                <h5>Số lượng sản phẩm: @Model.Count</h5>
+            </div>
+            <div class="row">
+                <a class="anchor" asp-action="DeleteFilter" asp-controller="Laptop">Xóa lọc</a>
+            </div>
+            <br />
+            <div class="list-group list-group-flush">
+                <div class="list-group-item">
+                    Thương hiệu<br />
+                    <a class="btn" asp-action="FilterBrandMain" asp-controller="Laptop" asp-route-brand="PCBang">
+                        PCBang
+                    </a><br />
+                    <a class="btn" asp-action="FilterBrandMain" asp-controller="Laptop" asp-route-brand="PCWorld">
+                        PCWorld
+                    </a>
+                </div>
+            </div>
+            <div class="list-group list-group-flush">
+                <div class="list-group-item">
+                    CPU<br />
+                    <a class="btn" asp-action="FilterCPUMain" asp-controller="Laptop" asp-route-cpu="Core i5">
+                        Core i5
+                    </a><br />
+                    <a class="btn" asp-action="FilterCPUMain" asp-controller="Laptop" asp-route-cpu="Core i7">
+                        Core i7
+                    </a><br />
+                    <a class="btn" asp-action="FilterCPUMain" asp-controller="Laptop" asp-route-cpu="Core i9">
+                        Core i9
+                    </a>
+                </div>
+            </div>
+            <div class="list-group list-group-flush">
+                <div class="list-group-item">
+                    Giá<br />
+                    <a class="btn" asp-action="FilterPriceMain" asp-controller="Laptop" asp-route-price="20tr">
+                        Từ 20tr - 30 tr
+                    </a><br />
+                    <a class="btn" asp-action="FilterPriceMain" asp-controller="Laptop" asp-route-price="60tr">
+                        Từ 60tr - 70 tr
+                    </a><br />
+                    <a class="btn" asp-action="FilterPriceMain" asp-controller="Laptop" asp-route-price="120tr">
+                        Từ 120tr
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card mb-3 card-info">
+                            <a asp-controller="Detail"
+                               asp-action="Index" asp-route-id="@item.ProductId" asp-route-name="@item.ProductName">
+                                <img class="card-img-top card-img"
+                                     src="~/images/@item.ProductImage" alt="@item.ProductName">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    @item.ProductName
+                                </h4>
+                                <p class="card-text">
+                                    @item.ProductPrice.ToString("0,0") đ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+           
+    </div>

@@ -1,0 +1,27 @@
+﻿@model PCWeb.Models.Order
+@{
+    ViewData["Title"] = "Xóa";
+}
+<h3>Bạn có chắc xóa hóa đơn này không?</h3>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrderId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CusName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CusName)
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="OrderId" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-info">Trở về danh sách</a>
+    </form>
+</div>
+

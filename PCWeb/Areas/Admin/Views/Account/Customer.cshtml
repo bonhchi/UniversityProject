@@ -1,0 +1,42 @@
+﻿@using PCWeb.Models.Account
+@{
+    ViewData["Title"] = "Khách hàng";
+}
+@model List<User>
+<h2 class="text-md-center">Danh sách khách hàng</h2>
+<br />
+<h3>Số lượng tài khoản: @Model.Count</h3>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <td>STT</td>
+            <td>Tên</td>
+            <td>Email</td>
+            <td>Ngày sinh</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@(item.LastName + " " + item.FirstName)</td>
+                    <td>@item.Email</td>
+                    <td>@item.DayOfBirth.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <a class="btn btn-outline-info" asp-area="Admin" asp-controller="Account" asp-action="Edit" asp-route-id="@item.Id">Chỉnh sửa</a>
+                        <a class="btn btn-outline-danger" asp-area="Admin" asp-controller="Account" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+                        <a class="btn btn-outline-success" asp-area="Admin" asp-controller="Account" asp-action="Detail" asp-route-id="@item.Id">Chi tiết</a>
+                        <a class="btn btn-outline-success" asp-area="Admin" asp-controller="Account" asp-action="ChangePassword" asp-route-id="@item.Id">Thay đổi mật khẩu</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PCWeb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar flex-column navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top">
+            <div class="container">
+                <a class="navbar-brand col-lg-2" asp-controller="Home" asp-action="Index"><img class="img-icon" src="~/images/Logo/imac.png"  title="PCBang">PCBang</a>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse col-lg-6 offset-1">
+                    <form class="navbar-nav flex-grow-1" asp-controller="Home" asp-action="Search" method="get">
+                        <div class="nav-item col-lg-9">
+                            <input type="text" class=" form-control mr-sm-2" name="search" placeholder="Nhập tên sản phẩm">
+                        </div>
+                        <div class="nav-item col-lg-3">
+                            <button type="submit" class="btn btn-success">Tìm</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="navbar-collapse col-lg-4 collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+            <br>
+            <div class="container">
+                <div class="nav-item">
+                    <a class="nav-link text-dark" asp-action="Index" asp-controller="Laptop">Laptop</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link text-dark" asp-action="Index" asp-controller="PC">PC</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link text-dark" asp-action="News" asp-controller="Home">Khuyến mãi</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link text-dark" asp-action="Intro" asp-controller="Home">Giới thiệu</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link text-dark" asp-action="Contact" asp-controller="Home">Góp ý</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container test-padding">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+        <br />
+    </div>
+    <footer class="border-top footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <h3>Công Ty TNHH PCBang</h3>
+                        Địa chỉ: 123A Đường số 1, Phường 14, Quận 4<br />
+                        Email: PCBang@gmail.com<br />
+                        SĐT: 0704556751<br />
+                        Thời gian làm việc: 8h30 - 20h30 (Từ thứ 2 đến thứ 7)
+                    </div>
+                    <br />
+                    <div class="row">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.459429100339!2d106.66587351474897!3d10.776081192321756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752edb9d9e80e7%3A0x3adbc3782c807d1!2zODI0IFPGsCBW4bqhbiBI4bqhbmgsIFBoxrDhu51uZyAxMiwgUXXhuq1uIDEwLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1588081806985!5m2!1svi!2s" width="400" height="280" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="text-center" style="padding-right:40px">Fanpage</h3>
+                    <iframe align="right" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FYureiFansub%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                </div>
+            </div>
+            <br/>
+            <br />
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

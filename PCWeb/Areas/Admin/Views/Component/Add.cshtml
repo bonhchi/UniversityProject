@@ -1,0 +1,33 @@
+﻿@model PCWeb.Models.Name.PCComponent
+@{
+    ViewData["Title"] = "Thêm linh kiện";
+}
+<h2 class="text-center">Phân loại linh kiện</h2>
+<hr />
+<div class="col-lg-10">
+    <form asp-action="Add" asp-controller="Component" method="post">
+        <div class="form-group row">
+            <label asp-for="Product.ProductName" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-6">
+                <select asp-for="ProductId" class="form-control"
+                        asp-items="@ViewBag.Selected">
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="ComponentCategory.ComponentCategoryName" class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-6">
+                <select asp-for="ComponentCategoryId" class="form-control"
+                        asp-items="@ViewBag.Category">
+                </select>
+            </div>
+        </div>
+        <div class="form-group row col-sm-3">
+            <input type="submit" value="Thêm" class="btn btn-primary" />
+        </div>
+    </form>
+    <div>
+        <a asp-action="Index" class="btn btn-primary">Quay lại danh sách</a>
+    </div>
+</div>
+

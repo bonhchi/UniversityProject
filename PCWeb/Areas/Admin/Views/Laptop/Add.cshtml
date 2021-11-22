@@ -1,0 +1,144 @@
+﻿@model PCWeb.Models.Root.Laptop
+@{
+    ViewData["Title"] = "Thêm thông số laptop";
+}
+<h2 class="text-center">Thêm thông số laptop</h2>
+<hr />
+<div class="row">
+    <div class="col-lg-12">
+        <form asp-action="Add" asp-controller="Laptop" method="post" enctype="multipart/form-data">
+            <div class="form-group row">
+                <label asp-for="Product.ProductName" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <select asp-for="ProductId" class="form-control"
+                            asp-items="@ViewBag.Selected">
+                    </select>
+                </div>
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopSeries" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopSeries" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopSeries" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopCPU" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopCPU" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopCPU" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopScreen" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopScreen" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopScreen" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopGPU" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopGPU" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopGPU" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopRAM" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopRAM" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopRAM" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopWebcam" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopWebcam" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopWebcam" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopStorage" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopStorage" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopStorage" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopPort" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopPort" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopPort" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopConnectivity" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopConnectivity" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopConnectivity" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopOS" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopOS" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopOS" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopDimension" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopDimension" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopDimension" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopBattery" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopBattery" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopBattery" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopWeight" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopWeight" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopWeight" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopKeyboard" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopKeyboard" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopKeyboard" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopColor" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="LaptopColor" class="form-control" />
+                </div>
+                <span asp-validation-for="LaptopColor" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="LaptopCategory.LaptopCategoryName" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <select asp-for="LaptopCategoryId" class="form-control"
+                            asp-items="@ViewBag.Category">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row col-sm-3">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Quay lại danh sách</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

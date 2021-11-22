@@ -1,0 +1,32 @@
+﻿@using PCWeb.Models.Source
+@{
+    ViewData["Title"] = "Kết quả tìm kiếm";
+}
+
+@model List<Product>
+<br />
+<h3>Kết quả tìm kiếm</h3>
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card mb-5 card-info">
+                <a asp-controller="Detail"
+                   asp-action="Index" asp-route-id="@item.ProductId" asp-route-name="@item.ProductName">
+                    <img class="card-img-top card-img"
+                         src="~/images/@item.ProductImage" alt="@item.ProductName">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        @item.ProductName
+                    </h4>
+                    <p class="card=text">
+                        @item.ProductPrice.ToString("0,0") đ
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

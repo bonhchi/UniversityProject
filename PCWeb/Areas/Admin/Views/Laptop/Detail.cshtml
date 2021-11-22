@@ -1,0 +1,173 @@
+﻿@model PCWeb.Models.Root.Laptop
+@{
+    ViewData["Title"] = "Chi tiết thông số Laptop";
+}
+<div>
+    <h2 class="text-center">Chi tiết thông số Laptop</h2>
+    <br />
+    <h4>Thông tin chung</h4>
+    <br />
+    <div class="row">
+        <div class="col-lg-6">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.ProductName)
+                        </th>
+                        <td>
+                            @ViewBag.product
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Product.Brand.BrandName)
+                        </th>
+                        <td>
+                            @ViewBag.brand
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopCPU)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopCPU)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopScreen)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopScreen)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopGPU)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopGPU)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopRAM)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopRAM)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopStorage)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopStorage)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopBattery)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopBattery)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopWeight)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopWeight)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-6">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopSeries)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopSeries)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopCategory.LaptopCategoryName)
+                        </th>
+                        <td>
+                            @ViewBag.category
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopWebcam)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopWebcam)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopPort)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopPort)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopConnectivity)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopConnectivity)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopKeyboard)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopKeyboard)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopOS)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopOS)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopDimension)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopDimension)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LaptopColor)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.LaptopColor)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row col-sm-3">
+    <a asp-action="Index" class="btn btn-primary">Quay lại danh sách</a>
+</div>
+
+

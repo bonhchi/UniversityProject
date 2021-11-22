@@ -1,0 +1,11 @@
+﻿@model PCWeb.Models.Promotion
+@{
+    ViewData["Title"] = "Hủy khuyến mãi";
+}
+<h3>Bạn có chắc chắn ngừng khuyến mãi này không?</h3>
+<form asp-action="Cancel">
+    <input type="hidden" asp-for="PromotionId" />
+    <input type="submit" value="Hủy" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-info">Quay về danh sách</a>
+</form>
+

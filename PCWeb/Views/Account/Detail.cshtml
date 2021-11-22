@@ -1,0 +1,68 @@
+﻿@model PCWeb.Models.Account.UserInfo
+@{
+    ViewData["Title"] = "Thông tin khách hàng";
+}
+<br />
+<h3 class="text-center">Thông tin khách hàng</h3>
+<br />
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>Tên</th>
+            <td>
+                @(Model.LastName + " " + @Model.FirstName)
+            </td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>
+                @Model.Email
+            </td>
+        </tr>
+        <tr>
+            <th>Địa chỉ</th>
+            <td>
+                @Model.Address
+            </td>
+        </tr>
+        <tr>
+            <th>Ngày sinh</th>
+            <td>
+                @Model.DayOfBirth.ToString("dd/MM/yyyy")
+            </td>
+        </tr>
+        <tr>
+            <th>Số điện thoại</th>
+            <td>
+                @Model.PhoneNumber
+            </td>
+        </tr>
+        <tr>
+            <th>Giới tính</th>
+            <td>
+                @Model.Gender
+            </td>
+        </tr>
+        <tr>
+            <th>Hạng khách hàng</th>
+            <td>
+                @Model.UserGradeName
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Điểm tích lũy
+            </th>
+            <td>
+                @Model.UserPoint
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="row justify-content-md-center">
+        <a class="btn btn-primary" asp-area="" asp-action="Edit" asp-controller="Account" asp-route-id="@ViewBag.Id">Thay đổi thông tin</a>
+        <a class="btn btn-primary " style="margin-left:30px" asp-area="" asp-action="ChangePassword" asp-controller="Account" asp-route-id="@ViewBag.Id">Thay đổi mật khẩu</a>
+        <a class="btn btn-primary" style="margin-left:30px" asp-area="" asp-action="Order" asp-controller="Account" asp-route-id="@ViewBag.Id">Thông tin đơn hàng</a>
+</div>
+
+

@@ -1,0 +1,68 @@
+﻿@using PCWeb.Models.Root
+@{
+    ViewData["Title"] = "PC";
+}
+@model List<PC>
+<h2 class="text-md-center">PC</h2>
+<br />
+<form class="row" asp-controller="PC" asp-action="Index" asp-area="Admin" method="get">
+    <div class="col-sm-2 text-right form-group">
+        <label class="col-form-label">
+            Tìm kiếm:
+        </label>
+    </div>
+    <div class="form-group col-sm-2">
+        <select name="name" class="form-control">
+            <option value="all">All</option>
+            @foreach (var item in ViewBag.Category)
+            {
+                <option value="@item.PCCategoryName">@item.PCCategoryName</option>
+            }
+        </select>
+        <span asp-validation-for="@Model[0].PCCategoryId" class="text-danger"></span>
+    </div>
+    <div class="col-sm-6 form-group">
+        <input type="text" class="input-width form-control mr-sm-2" name="search" placeholder="Nhập tên PC">
+    </div>
+    <div class="col-sm-2 form-group">
+        <button type="submit" class="btn btn-success">Tìm</button>
+    </div>
+</form>
+
+<br />
+<h3>Số lượng sản phẩm: @Model.Count</h3>
+<p><a class="btn btn-primary" asp-controller="PC" asp-action="Add">Thêm</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên PC</th>
+            <th>CPU</th>
+            <th>RAM</th>
+            <th>Loại PC</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            int i = 1;
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.PCCpu</td>
+                    <td>@item.PCRam</td>
+                    <td>@item.PCCategory.PCCategoryName</td>
+                    <td>
+                        <a class="btn btn-outline-info" asp-area="Admin" asp-controller="PC" asp-action="Edit" asp-route-id="@item.PCId">Chỉnh sửa</a>
+                        <a class="btn btn-outline-danger" asp-area="Admin" asp-controller="PC" asp-action="Delete" asp-route-id="@item.PCId">Xóa</a>
+                        <a class="btn btn-outline-success" asp-area="Admin" asp-controller="PC" asp-action="Detail" asp-route-id="@item.PCId">Chi tiết</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

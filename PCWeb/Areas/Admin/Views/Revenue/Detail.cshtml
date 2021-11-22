@@ -1,0 +1,118 @@
+﻿@model PCWeb.Models.Revenue
+@{
+    ViewData["Title"] = "Chi tiết doanh thu";
+}
+<div>
+    <h2 class="text-center">Chi tiết Doanh thu</h2>
+    <br />
+    <h4>Thông tin chung</h4>
+    <div class="row">
+        <div class="col-lg-6">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductName)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.ProductName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductPrice)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.ProductPrice)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DayCreate)
+                        </th>
+                        <td>
+                            @ViewBag.DayCreate
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-6">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductCode)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.ProductCode)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductSeries)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.ProductSeries)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateExpired)
+                        </th>
+                        @if (Model.DateExpired.ToString("dd/MM/yyyy") == "01/01/0001")
+                        {
+                            <td>
+                                Sản phẩm còn kinh doanh
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @ViewBag.DayExpired
+                            </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>STT</td>
+                    <td>Ngày mua</td>
+                    <td>Số lượng</td>
+                    <td>Giá thực tế</td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewBag.Detail != null)
+                {
+                    int i = 1;
+                    @foreach (var item in ViewBag.Detail)
+                    {
+                        <tr>
+                            <td>@(i++)</td>
+                            <td>@item.DateIssue.ToString("dd/MM/yyyy")</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.PriceReality</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+            @*<tr>
+                <td align="right" colspan="5">Tổng cộng:</td>
+                <td>@ViewBag.Total.ToString("0,0")</td>
+            </tr>*@
+        </table>
+    </div>
+</div>
+<div>
+    <a asp-area="Admin" asp-controller="Revenue" asp-action="Index" class="btn btn-primary">Trở về danh sách</a>
+</div>
+       
+        
+
+

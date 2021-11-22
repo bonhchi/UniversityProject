@@ -1,0 +1,50 @@
+﻿@using PCWeb.Models
+@using PCWeb.Data
+@inject DataContext dataContext
+@{
+    ViewData["Title"] = "Khuyến mãi";
+}
+@model List<Promotion>
+<h2 class="text-md-center">Khuyến mãi</h2>
+<p><a class="btn btn-primary" asp-controller="Promotion" asp-action="Add">Thêm khuyến mãi</a></p>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên khuyến mãi</th>
+            <th>Mã áp dụng</th>
+            <th>Tỉ lệ khuyến mãi</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@item.PromotionName</td>
+                    <td>@item.PromotionCode</td>
+                    <td>@item.PromotionDiscount</td>
+                    <td>
+                        <a class="btn btn-outline-info" asp-area="Admin" asp-controller="Promotion" asp-action="Edit" asp-route-id="@item.PromotionId">Chỉnh sửa</a>
+                        <a class="btn btn-outline-danger" asp-area="Admin" asp-controller="Promtion" asp-action="Delete" asp-route-id="@item.PromotionId">Xóa</a>
+                        <a class="btn btn-outline-success" asp-area="Admin" asp-controller="Promotion" asp-action="Detail" asp-route-id="@item.PromotionId">Chi tiết</a>
+                        @if (dataContext.PromotionDetails.Where(p => p.PromotionId == item.PromotionId).Count() == 0)
+                        {
+                            <a class="btn btn-outline-success" asp-area="Admin" asp-controller="Promotion" asp-action="Apply" asp-route-id="@item.PromotionId">Áp dụng khuyến mãi</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-success" asp-area="Admin" asp-controller="Promotion" asp-action="Cancel" asp-route-id="@item.PromotionId">Kết thúc khuyến mãi</a>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,73 @@
+﻿@model PCWeb.Models.Contact
+@{
+    ViewData["Title"] = "Chi tiết góp ý";
+}
+    <div>
+        <h2 class="text-center">Chi tiết góp ý</h2>
+        <br />
+        <h4>Thông tin chung</h4>
+        <br />
+        <div class="row">
+            <div class="col-lg-6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ContactId)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.ContactId)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ContactName)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.ContactName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ContactAddress)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.ContactAddress)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ContactEmail)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.ContactEmail)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ContactPhone)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.ContactPhone)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ContactNote)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.ContactNote)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+

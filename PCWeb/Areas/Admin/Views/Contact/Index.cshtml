@@ -1,0 +1,38 @@
+﻿@using PCWeb.Models
+@{
+    ViewData["Title"] = "Góp ý";
+}
+@model List<Contact>
+<h2 class="text-md-center">Góp ý</h2>
+<br />
+<table class="table">
+    <tr>
+        <th>STT</th>
+        <th>Tên</th>
+        <th>Email</th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        int i = 1;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(i++)
+                </td>
+                <td>
+                    @item.ContactName
+                </td>
+                <td>
+                    @item.ContactEmail
+                </td>
+                <td>
+                    <a class="btn btn-outline-info" asp-area="Admin" asp-controller="Contact" asp-action="Detail" asp-route-id="@item.ContactId">Xem liên hệ</a>
+                    <a class="btn btn-outline-danger" asp-area="Admin" asp-controller="Contact" asp-action="Delete" asp-route-id="@item.ContactId">Xóa</a>
+                </td>
+            </tr>
+        }
+    }
+</table>
+

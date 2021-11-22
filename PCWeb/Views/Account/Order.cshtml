@@ -1,0 +1,41 @@
+﻿@using PCWeb.Models
+@{
+    ViewData["Title"] = "Danh sách đơn hàng";
+}
+@model List<Order>
+    <br />
+    <h3 class="text-center">Danh sách đơn hàng</h3>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Ngày đặt</th>
+                <th>Tình trạng đơn hàng</th>
+                <th>Thanh toán</th>
+                <th>Tùy chọn</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                int i = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(i++)</td>
+                        <td>@item.OrderDate.ToString("dd/MM/yyyy")</td>
+                        <td>@item.OrderCondition.OrderConditionName</td>
+                        <td>@item.OrderCheckout</td>
+                        <td>
+                            <a class="btn btn-outline-success" asp-controller="Account" asp-action="OrderDetail" asp-route-id="@item.OrderId">Chi tiết</a>
+                            @if (item.OrderConditionId == 1 || item.OrderConditionId == 2)
+                            {
+                                <a class="btn btn-outline-danger" asp-controller="Account" asp-action="Cancel" asp-route-id="@item.OrderId">Hủy đơn hàng</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>

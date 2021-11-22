@@ -1,0 +1,149 @@
+﻿@model PCWeb.Models.Order
+@using Microsoft.AspNetCore.Identity
+@using PCWeb.Models.Account
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@{
+    ViewData["Title"] = "Thanh toán";
+}
+<br />
+@if (ViewBag.cart != null)
+{
+
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>Thanh toán</h2>
+            <form asp-controller="Cart" asp-action="Checkout" method="post" enctype="multipart/form-data">
+                @*Lỗi không nhận User*@
+                @if (SignInManager.IsSignedIn(User))
+                {
+                <div class="form-group">
+                    <label asp-for="CusName" class="control-label"></label>
+                    <input asp-for="CusName" value="@(UserManager.Users.FirstOrDefault(p => p.Email == User.Identity.Name).LastName + " " + UserManager.Users.FirstOrDefault(p => p.Email == User.Identity.Name).FirstName)" readonly="readonly" class="form-control" />
+                    <span asp-validation-for="CusName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" value="@User.Identity.Name" readonly="readonly" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" value="@UserManager.Users.FirstOrDefault(p => p.Email == User.Identity.Name).Address" readonly="readonly" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phone" class="control-label"></label>
+                    <input asp-for="Phone" value="@UserManager.Users.FirstOrDefault(p => p.Email == User.Identity.Name).PhoneNumber" readonly="readonly" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <label asp-for="CusName" class="control-label"></label>
+                        <input asp-for="CusName" class="form-control" />
+                        <span asp-validation-for="CusName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone" class="control-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                }
+                <div class="form-group">
+                    <label asp-for="Note" class="control-label"></label>
+                    <input asp-for="Note" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="PaymentMethod.PaymentMethodName"></label>
+                    <div class="form-group">
+                        <input onclick="hiddenCheckboxPayPal()" id="cash" type="checkbox" name="answer" value="COD" />
+                        <label class="control-label">Thanh toán khi nhận hàng</label>
+                    </div>
+                    <div class="form-group">
+                        <input onclick="hiddenCheckboxPayPal()" id="paypal" type="checkbox" name="answer" value="paypal" />
+                        <label class="control-label">Thanh toán bằng Paypal</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Mua hàng" class="btn btn-primary" />
+                </div>
+            </form>
+
+            <a asp-controller="Home" asp-action="Index" class="btn btn-info">Quay về trang chủ</a>
+        </div>
+        <div class="col-lg-6">
+            <table class="table table-bordered">
+                <tr>
+                    <th>STT</th>
+                    <th>Tên SP</th>
+                    <th>Hình ảnh</th>
+                    <th>Số lượng</th>
+                    <th>Giá tiền</th>
+                </tr>
+                @if (ViewBag.cart != null)
+                {
+                    int i = 1;
+                    @foreach (var item in ViewBag.cart)
+                    {
+                        <tr>
+                            <td>@(i++)</td>
+                            <td>@item.Product.ProductName</td>
+                            <td><img src="~/images/@item.Product.ProductImage" width="100px" height="100px" /></td>
+                            <td>@item.Quantity</td>
+                            <td>@((item.Product.ProductPrice * item.Quantity).ToString("0,0")) đ</td>
+                        </tr>
+                    }
+                }
+
+                <tr>
+                    <td align="left" colspan="3">Thuế VAT (@ViewBag.VAT %)</td>
+                    <td colspan="2">@ViewBag.VATFee.ToString("0,0") đ</td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="3">Phí vận chuyển (Số lượng : @ViewBag.Weight kg)</td>
+                    <td colspan="2">@ViewBag.WeightCost.ToString("0,0") đ</td>
+                </tr>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <tr>
+                        <td align="left" colspan="3">Điểm thưởng:</td>
+                        <td colspan="2">@ViewBag.Point</td>
+                    </tr>
+                }
+                <tr>
+                    <td align="left" colspan="3">Tổng</td>
+                    <td colspan="2">
+                        @ViewBag.total.ToString("0,0") đ
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+}
+
+<script>
+    var checkBoxPaypal = document.getElementById("paypal");
+    var checkBoxCOD = document.getElementById("cash");
+    function hiddenCheckboxPayPal() {
+        if (checkBoxPaypal.checked == true)
+            checkBoxCOD.disabled = true;
+        if (checkBoxCOD.checked == true)
+            checkBoxPaypal.disabled = true;
+        if (checkBoxCOD.checked == false && checkBoxPaypal.checked == false) {
+            checkBoxCOD.disabled = false;
+            checkBoxPaypal.disabled = false;
+        }
+    }
+</script>

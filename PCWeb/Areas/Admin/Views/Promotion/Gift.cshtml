@@ -1,0 +1,23 @@
+﻿@model PCWeb.Models.Gift
+@{
+    ViewData["Title"] = "Thêm quà tặng";
+}
+<h4 class="text-center">Thêm quà tặng</h4>
+<hr />
+<div class="row">
+    <div class="col-lg-10">
+        <form asp-action="Gift" asp-controller="Promotion" method="post" enctype="multipart/form-data">
+            <div class="form-group row">
+                <label asp-for="GiftName" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-6">
+                    <input asp-for="GiftName" class="form-control" />
+                </div>
+                <span asp-validation-for="GiftName" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Thêm" class="btn btn-danger" />
+        </form>
+    </div>
+    <div class="row">
+        <a asp-action="Apply" asp-controller="Promotion" asp-area="Admin" asp-route-id="@ViewBag.ID" class="btn btn-info">Quay về</a>
+    </div>
+</div>

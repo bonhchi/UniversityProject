@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Xác nhận";
+}
+<br />
+@if (ViewBag.Status == null)
+{
+    <h2 class="text-center">Không có gì hết</h2>
+}
+else
+{
+    <h2 class="text-center">Cảm ơn quý khách đã mua hàng ở PCBang</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>STT</th>
+            <th>Tên SP</th>
+            <th>Hình ảnh</th>
+            <th>Số lượng</th>
+            <th>Giá tiền</th>
+        </tr>
+        @if (ViewBag.cart != null)
+        {
+            int i = 1;
+            @foreach (var item in ViewBag.cart)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@item.Product.ProductName</td>
+                    <td><img src="~/images/@item.Product.ProductImage" width="100px" height="100px" /></td>
+                    <td>@item.Quantity</td>
+                    <td>@((item.Product.ProductPrice * item.Quantity).ToString("0,0")) đ</td>
+                </tr>
+            }
+        }
+        <tr>
+            <td align="left" colspan="3">Thuế VAT (@ViewBag.VAT %)</td>
+            <td colspan="2">@ViewBag.VATFee.ToString("0,0") đ</td>
+        </tr>
+        <tr>
+            <td align="left" colspan="3">Phí vận chuyển (Số lượng : @ViewBag.Weight kg)</td>
+            <td colspan="2">@ViewBag.WeightCost.ToString("0,0") đ</td>
+        </tr>
+        <tr>
+            <td align="left" colspan="3">Tổng</td>
+            <td colspan="2">
+                @ViewBag.total.ToString("0,0") đ
+            </td>
+        </tr>
+    </table>
+    <div class="row justify-content-center">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-info">Quay về trang chủ</a>
+    </div>
+    
+}
+

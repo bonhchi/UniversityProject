@@ -1,0 +1,84 @@
+﻿@model PCWeb.Models.Account.UserInfo
+@{
+    ViewData["Title"] = "Chi tiết tài khoản";
+}
+    <div>
+        <h2 class="text-center">Chi tiết tài khoản</h2>
+        <br />
+        <h4>Thông tin chung</h4>
+        <br />
+        <div class="row">
+            <div class="col-lg-6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstName)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.FirstName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Address)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.Address)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.Email)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DayOfBirth)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.DayOfBirth)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.LastName)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.LastName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PhoneNumber)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.PhoneNumber)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Gender)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.Gender)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Staff" asp-area="Admin" asp-controller="Account" class="btn btn-primary">Trở lại danh sách</a>
+    </div>

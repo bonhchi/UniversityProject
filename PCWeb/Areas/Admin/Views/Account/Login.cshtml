@@ -1,0 +1,39 @@
+﻿@model PCWeb.Models.Account.UserLogin
+@{
+    ViewData["Title"] = "Đăng nhập";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="row justify-content-center">
+    <div class="col-lg-5">
+        <div class="card shadow-lg border-0 rounded-lg mt-5">
+            <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+            <div class="card-body">
+                <form asp-action="Login" asp-area="Admin" asp-controller="Account" asp-route-returnUrl="@ViewData["ReturnUrlAdmin"]" method="post">
+                    <div class="form-group">
+                        <label asp-for="Email" class="small mb-1"></label>
+                        <input asp-for="Email" class="form-control py-4" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="small mb-1"></label>
+                        <input asp-for="Password" class="form-control py-4" />
+                        <span asp-validation-for="Password" class="text-danger">
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-check-label">
+                            @Html.DisplayNameFor(model => model.RememberMe)
+                        </label>
+                        <input class="form-check-input col-md-3" asp-for="RememberMe" />
+                    </div>
+                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                        <input type="submit" value="Đăng nhập" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

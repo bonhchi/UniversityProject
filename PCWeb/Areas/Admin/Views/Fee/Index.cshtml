@@ -1,0 +1,38 @@
+﻿@using PCWeb.Models.Root
+@{
+    ViewData["Title"] = "Phí";
+}
+@model List<Fee>
+<h3>Số lượng phí: @Model.Count</h3>
+<p><a class="btn btn-primary" asp-controller="Fee" asp-action="Add">Thêm</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên phí</th>
+            <th>Giá</th>
+            <th>Đơn vị</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            int i = 1;
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@item.FeeName</td>
+                    <td>@item.FeeAmount</td>
+                    <td>@item.FeeUnit</td>
+                    <td>
+                        <a class="btn btn-outline-info" asp-area="Admin" asp-controller="Fee" asp-action="Edit" asp-route-id="@item.FeeId">Chỉnh sửa</a>
+                        <a class="btn btn-outline-danger" asp-area="Admin" asp-controller="Fee" asp-action="Delete" asp-route-id="@item.FeeId">Xóa</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

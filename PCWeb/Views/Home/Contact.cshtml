@@ -1,0 +1,55 @@
+﻿@model PCWeb.Models.Contact
+@{
+    ViewData["Title"] = "Liên hệ";
+}
+<br />
+<h2 class="text-center">Góp ý</h2>
+<br />
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Contact" method="post" asp-controller="Home" asp-area="">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <label asp-for="ContactName" class="control-label col-md-3"></label>
+                <div class="col-md-9">
+                    <input asp-for="ContactName" class="form-control" />
+                </div>
+
+                <span asp-validation-for="ContactName" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="ContactEmail" class="control-label col-md-3"></label>
+                <div class="col-md-9">
+                    <input asp-for="ContactEmail" class="form-control" />
+                </div>
+                <span asp-validation-for="ContactEmail" class="text-danger"> </span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="ContactAddress" class="control-label col-md-3"></label>
+                <div class="col-md-9">
+                    <input asp-for="ContactAddress" class="form-control" />
+                </div>
+
+                <span asp-validation-for="ContactAddress" class="text-danger"> </span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="ContactPhone" class="control-label col-md-3"></label>
+                <div class="col-md-9">
+                    <input asp-for="ContactPhone" class="form-control" />
+                </div>
+
+                <span asp-validation-for="ContactPhone" class="text-danger"> </span>
+            </div>
+            <div class="form-group row">
+                <label asp-for="ContactNote" class="control-label col-md-3"></label>
+                <div class="col-md-9">
+                    <textarea asp-for="ContactNote" class="form-control"></textarea>
+                </div>
+                <span asp-validation-for="ContactNote" class="text-danger"> </span>
+            </div>
+            <div class="form-group row justify-content-center">
+                <input type="submit" value="Tạo tài khoản" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
